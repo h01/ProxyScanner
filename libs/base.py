@@ -84,6 +84,7 @@ class base:
 		for i in range(self._t):
 			__t.append(threading.Thread(target = func, args = (__q, )))
 		for i in range(self._t):
+			__t[i].setDaemon(True)
 			__t[i].start()
 		for i in range(self._t):
 			__t[i].join(timeout = 10)
@@ -121,6 +122,7 @@ class base:
 				cui.s('Save as (%s)'%self._s)
 		else:
 			cui.i('Not result!')
+		exit(0)
 	def banner(self):
 		return '''\
 	______                    _____                                 
