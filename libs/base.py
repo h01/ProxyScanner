@@ -86,7 +86,7 @@ class base:
 		for i in range(self._t):
 			__t[i].start()
 		for i in range(self._t):
-			__t[i].join()
+			__t[i].join(timeout = 10)
 	def checkPort(self, host, port):
 		try:
 			_s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -101,9 +101,9 @@ class base:
 		_h = urllib2.ProxyHandler({'http': _p})
 		_o = urllib2.build_opener(_h, urllib2.HTTPHandler)
 		try:
-			_r = _o.open('http://www.baidu.com/', timeout = 5)
+			_r = _o.open('http://www.baidu.com/img/baidu_jgylogo3.gif', timeout = 5)
 			_l = len(_r.read())
-			if _l > 1024:
+			if _l == 705:
 				return True
 			return False
 		except Exception,e:
